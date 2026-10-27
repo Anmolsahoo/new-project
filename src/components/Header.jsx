@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Menu, X, MessageCircle, Phone, ArrowUpRight, ShieldCheck } from 'lucide-react';
@@ -78,17 +78,8 @@ export default function Header() {
               </div>
             </Link>
 
-            {/* Right Controls: Right-Side Official Logo, Search Icon & Three-Bar Menu */}
+            {/* Right Controls: Search Icon & Three-Bar Menu (Image 1 Style) */}
             <div className="header__controls">
-              {/* User Requested: Logo in the Header Right Side */}
-              <Link to="/" className="header__right-logo" title="Srinivas Nayak & Construction (P) Limited">
-                <img
-                  src="/snc-logo.png"
-                  alt="SNC Official Logo"
-                  className="header__right-logo-img"
-                />
-              </Link>
-
               {/* Search Button */}
               <button
                 className="header__search-trigger"
