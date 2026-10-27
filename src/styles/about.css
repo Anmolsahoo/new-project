@@ -1,0 +1,190 @@
+/* ============================================================
+   ABOUT & INTRO SECTION STYLES
+   ============================================================ */
+
+.about {
+  overflow: hidden;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5rem;
+  align-items: center;
+}
+
+/* Image column */
+.about__image-col {
+  position: relative;
+}
+
+.about__image-stack {
+  position: relative;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+}
+
+.about__image-main {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  box-shadow: var(--shadow-lg);
+  z-index: 1;
+}
+
+.about__image-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about__image-accent {
+  position: absolute;
+  bottom: -1rem;
+  right: -1.75rem;
+  width: 55%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 4px solid var(--warm-white);
+  box-shadow: var(--shadow-md);
+  z-index: 2;
+}
+
+.about__image-accent img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Gold corner decoration */
+.about__corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  z-index: 0;
+}
+
+.about__corner::before,
+.about__corner::after {
+  content: '';
+  position: absolute;
+  background: var(--gold);
+  border-radius: 1px;
+  opacity: 0.5;
+}
+
+.about__corner::before { top: 0; left: 0; width: 60px; height: 2px; }
+.about__corner::after  { top: 0; left: 0; width: 2px; height: 60px; }
+
+.about__cert-panel {
+  position: absolute;
+  top: 2rem;
+  left: -1.5rem;
+  background: var(--navy);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-md);
+  z-index: 3;
+  max-width: 240px;
+}
+
+.about__cert-title {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.45rem;
+}
+
+/* Text column */
+.about__text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* Welcome Quote Box */
+.intro__welcome-box {
+  background: rgba(16, 42, 67, 0.04);
+  border-left: 3px solid var(--gold);
+  padding: 1.2rem 1.5rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.intro__welcome-text {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.45;
+  margin-bottom: 0.35rem;
+}
+
+.intro__welcome-author {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+
+.about__intro {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-dark);
+}
+
+.about__intro strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+/* Registration Grid */
+.intro__reg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.intro__reg-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.intro__reg-icon {
+  color: var(--gold-dark);
+  flex-shrink: 0;
+}
+
+.intro__reg-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.intro__reg-value {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+@media (max-width: 990px) {
+  .about__grid { grid-template-columns: 1fr; gap: 3.5rem; }
+  .about__image-col { order: -1; }
+  .about__image-accent { display: none; }
+  .about__cert-panel { left: 0; }
+}

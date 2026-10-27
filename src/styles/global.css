@@ -1,0 +1,349 @@
+/* ============================================================
+   GLOBAL CSS — SRINIVAS NAYAK AND CONSTRUCTION PVT. LTD.
+   Executive Architectural & Engineering Design System
+   ============================================================ */
+
+/* === Google Fonts Import: Plus Jakarta Sans, Manrope, Inter === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+/* === CSS Variables (Design Tokens) === */
+:root {
+  /* Requested Color Palette */
+  --navy:         #102A43; /* Primary navy blue */
+  --navy-deep:    #0A1D33; /* Ultra deep architectural navy */
+  --navy-darkest: #061324; /* Background void for hero & stats */
+  --navy-mid:     #173F67; /* Secondary blue */
+  --navy-royal:   #245A91; /* Royal blue accent */
+  --gold:         #C6A15B; /* Premium metallic gold */
+  --gold-light:   #E5CD94; /* Light gold highlight */
+  --gold-dark:    #9E7B36; /* Deep metallic gold */
+  --warm-white:   #F7F6F2; /* Warm off-white background */
+  --white:        #FFFFFF;
+  --text-dark:    #354052; /* Body text */
+  --text-muted:   #6B7280; /* Muted text */
+  --text-light:   #9CA3AF;
+  --border-gold:  rgba(198, 161, 91, 0.28);
+  --border-light: rgba(53, 64, 82, 0.12);
+
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', 'Manrope', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Spacing */
+  --section-py:   clamp(4.5rem, 8vw, 7.5rem);
+  --container-px: clamp(1.25rem, 4vw, 2.5rem);
+  --max-width:    1320px;
+
+  /* Architectural Radii: Clean, crisp, slightly structural (not rounded toy-like) */
+  --radius-sm:  2px;
+  --radius-md:  4px;
+  --radius-lg:  8px;
+
+  /* Elevation Shadows */
+  --shadow-sm:   0 2px 8px rgba(16, 42, 67, 0.06);
+  --shadow-md:   0 12px 36px rgba(16, 42, 67, 0.12);
+  --shadow-lg:   0 24px 64px rgba(16, 42, 67, 0.18);
+  --shadow-gold: 0 8px 30px rgba(198, 161, 91, 0.25);
+
+  /* Transitions */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition:  0.3s var(--ease-in-out);
+
+  /* Header Height */
+  --header-h: 82px;
+}
+
+/* === Reset & Base === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-dark);
+  background: var(--warm-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* === Container === */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+}
+
+/* === Section Layout Utilities === */
+.section {
+  padding: var(--section-py) 0;
+  position: relative;
+}
+
+.section--dark {
+  background: var(--navy);
+  color: #fff;
+}
+
+.section--navy-deep {
+  background: var(--navy-deep);
+  color: #fff;
+}
+
+.section--darkest {
+  background: var(--navy-darkest);
+  color: #fff;
+}
+
+.section--warm {
+  background: var(--warm-white);
+}
+
+.section--white {
+  background: #fff;
+}
+
+/* === Typography Utilities === */
+.heading-hero {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 6.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.heading-xl {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+
+.section--dark .heading-xl,
+.section--navy-deep .heading-xl,
+.section--darkest .heading-xl {
+  color: #fff;
+}
+
+.heading-lg {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--navy);
+}
+
+.heading-md {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--navy);
+}
+
+/* Section Header & Eyebrows */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.section-divider {
+  display: block;
+  width: 64px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.text-gold { color: var(--gold); }
+.text-gold-light { color: var(--gold-light); }
+.text-navy { color: var(--navy); }
+.text-muted { color: var(--text-muted); }
+
+/* === Button System === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 2.2rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: var(--transition);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy-darkest);
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-outline-white {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+}
+
+.btn-outline-white:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.btn-navy {
+  background: var(--navy);
+  color: #fff;
+}
+
+.btn-navy:hover {
+  background: var(--navy-mid);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--gold);
+  border: 1.5px solid var(--gold);
+}
+
+.btn-outline-gold:hover {
+  background: var(--gold);
+  color: var(--navy-darkest);
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #fff;
+  font-weight: 700;
+}
+
+.btn-whatsapp:hover {
+  background: #20BD5A;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+}
+
+.btn-sm {
+  padding: 0.65rem 1.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.btn-lg {
+  padding: 1.15rem 2.6rem;
+  font-size: 0.95rem;
+}
+
+/* === Architectural Line Accents === */
+.gold-line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
+}
+
+/* === Badge Styles === */
+.demo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  background: rgba(16, 42, 67, 0.85);
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* === Reduced Motion Support === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--warm-white); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}

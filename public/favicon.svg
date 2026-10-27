@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <rect width="48" height="48" rx="6" fill="#102B55"/>
+  <polygon points="24,8 6,22 12,22 12,40 36,40 36,22 42,22" fill="none" stroke="#C6A15B" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="20" y="28" width="8" height="12" fill="#C6A15B" rx="1"/>
+  <text x="24" y="20" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#C6A15B" text-anchor="middle">SNC</text>
+</svg>
