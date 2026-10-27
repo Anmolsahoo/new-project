@@ -61,18 +61,34 @@ export default function Header() {
           <div className="header__inner">
             {/* Logo + "EST. 2023" Badge (Matching ECC 50 YEARS Style) */}
             <Link to="/" className="header__brand" aria-label="Srinivas Nayak and Construction Homepage">
-              <div className="header__logo-mark">
-                <span className="header__logo-snc">SNC</span>
-                <span className="header__logo-sub">CONSTRUCTION</span>
-              </div>
-              <div className="header__est-badge">
-                <span className="header__est-year">EST.</span>
-                <span className="header__est-bold">2023</span>
+              <img
+                src="/snc-logo.png"
+                alt="SNC Official Logo"
+                className="header__brand-logo-img"
+              />
+              <div className="header__logo-text-wrap">
+                <div className="header__logo-mark">
+                  <span className="header__logo-snc">SNC</span>
+                  <span className="header__logo-sub">CONSTRUCTION</span>
+                </div>
+                <div className="header__est-badge">
+                  <span className="header__est-year">EST.</span>
+                  <span className="header__est-bold">2023</span>
+                </div>
               </div>
             </Link>
 
-            {/* Right Controls: Search Icon & Three-Bar Menu (Image 1 Style) */}
+            {/* Right Controls: Right-Side Official Logo, Search Icon & Three-Bar Menu */}
             <div className="header__controls">
+              {/* User Requested: Logo in the Header Right Side */}
+              <Link to="/" className="header__right-logo" title="Srinivas Nayak & Construction (P) Limited">
+                <img
+                  src="/snc-logo.png"
+                  alt="SNC Official Logo"
+                  className="header__right-logo-img"
+                />
+              </Link>
+
               {/* Search Button */}
               <button
                 className="header__search-trigger"
@@ -80,7 +96,7 @@ export default function Header() {
                 aria-label="Open search bar"
                 title="Search services, projects, materials"
               >
-                <Search size={22} />
+                <Search size={21} />
               </button>
 
               {/* Three-Bar Hamburger Menu Button */}
@@ -120,13 +136,20 @@ export default function Header() {
               <div className="mega-menu__header">
                 {/* Brand Logo & EST Badge */}
                 <Link to="/" onClick={() => setMegaMenuOpen(false)} className="header__brand">
-                  <div className="header__logo-mark">
-                    <span className="header__logo-snc">SNC</span>
-                    <span className="header__logo-sub">CONSTRUCTION</span>
-                  </div>
-                  <div className="header__est-badge">
-                    <span className="header__est-year">EST.</span>
-                    <span className="header__est-bold">2023</span>
+                  <img
+                    src="/snc-logo.png"
+                    alt="SNC Official Logo"
+                    className="header__brand-logo-img"
+                  />
+                  <div className="header__logo-text-wrap">
+                    <div className="header__logo-mark">
+                      <span className="header__logo-snc">SNC</span>
+                      <span className="header__logo-sub">CONSTRUCTION</span>
+                    </div>
+                    <div className="header__est-badge">
+                      <span className="header__est-year">EST.</span>
+                      <span className="header__est-bold">2023</span>
+                    </div>
                   </div>
                 </Link>
 

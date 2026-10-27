@@ -24,17 +24,21 @@ export default function Footer() {
   return (
     <footer className="footer" role="contentinfo">
       <div className="container">
-        <div className="footer__top" style={{ gridTemplateColumns: '2fr 1.1fr 1.3fr 1.4fr', gap: '2.5rem' }}>
+        <div className="footer__top">
           {/* Brand & Statutory Credentials */}
           <div className="footer__brand">
             <div className="footer__logo">
-              <div className="footer__logo-icon">SNC</div>
+              <img
+                src="/snc-logo.png"
+                alt="Srinivas Nayak & Construction (P) Limited Logo"
+                className="footer__logo-img"
+              />
               <div>
                 <div className="footer__logo-name">
                   Srinivas Nayak &amp; Construction
                 </div>
                 <div className="footer__logo-tagline">
-                  Pvt. Ltd. &bull; {COMPANY.tagline}
+                  (P) Limited &bull; {COMPANY.tagline}
                 </div>
               </div>
             </div>

@@ -530,3 +530,19 @@
   .materials__table th, .materials__table td { padding: 0.65rem 0.75rem; }
   .project-details__meta { grid-template-columns: 1fr; }
 }
+
+/* Private Projects Raw Materials Layout */
+.private-materials-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2.5rem;
+  align-items: start;
+  width: 100%;
+}
+
+@media (max-width: 990px) {
+  .private-materials-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

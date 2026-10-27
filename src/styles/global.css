@@ -65,6 +65,9 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-h);
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -74,7 +77,20 @@ body {
   color: var(--text-dark);
   background: var(--warm-white);
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  position: relative;
   -webkit-font-smoothing: antialiased;
+}
+
+#root,
+.app-shell {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 img {
@@ -303,6 +319,14 @@ input, textarea, select {
 .btn-lg {
   padding: 1.15rem 2.6rem;
   font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .btn {
+    white-space: normal;
+    text-align: center;
+    max-width: 100%;
+  }
 }
 
 /* === Architectural Line Accents === */

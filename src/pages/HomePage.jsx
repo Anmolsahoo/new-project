@@ -219,13 +219,7 @@ export default function HomePage() {
           </div>
 
           {/* 3 Sector Cards (Animated) */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '2rem',
-            }}
-          >
+          <div className="sector-home-cards-grid">
             {/* Card 1: Commercial Projects */}
             <motion.div
               className="sector-home-card"
@@ -361,14 +355,7 @@ export default function HomePage() {
         }}
       >
         <div className="container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '3rem',
-              alignItems: 'center',
-            }}
-          >
+          <div className="palace-feature-grid">
             <div>
               <span className="section-eyebrow">Client-Stated Specialization</span>
               <h2 className="heading-xl" style={{ color: '#fff', marginBottom: '1.25rem' }}>
@@ -378,7 +365,7 @@ export default function HomePage() {
                 From distinctive residences to monumental palace architectures, we combine heavy structural RCC engineering with classical porticos, carved stone facades, and luxury interior joinery.
               </p>
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <Link to="/expertise#palaces" className="btn btn-primary">
+                <Link to="/expertise" className="btn btn-primary">
                   Explore Palace Specialization <ArrowRight size={16} />
                 </Link>
                 <Link to="/contact" className="btn btn-outline-white">
@@ -406,7 +393,7 @@ export default function HomePage() {
           ============================================================ */}
       <section style={{ background: 'var(--navy)', padding: '2.5rem 0', borderTop: '1px solid var(--border-gold)' }}>
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+          <div className="home-action-strip">
             <div>
               <h3 style={{ color: '#fff', fontSize: '1.25rem', fontWeight: 800, marginBottom: '0.25rem' }}>
                 Ready to Initiate Your Project or Order Raw Materials?

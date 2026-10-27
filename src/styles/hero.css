@@ -300,22 +300,110 @@
   .hero__scroll-indicator { display: none; }
 }
 
-@media (max-width: 600px) {
-  .hero__strip-item {
-    flex: 1 0 100%;
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-bottom: 0;
   }
   .hero__content {
-    padding-bottom: 18rem;
+    padding-top: calc(var(--header-h) + 2rem);
+    padding-bottom: 2.5rem;
+  }
+  .hero__bottom-strip {
+    position: relative;
+    margin-top: 1.5rem;
+  }
+  .hero__strip-item {
+    flex: 1 0 100%;
+    padding: 0.85rem 1rem;
+  }
+  .hero__strip-label {
+    white-space: normal;
   }
   .hero__ctas {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.85rem;
+  }
+  .hero__pill-btn,
+  .hero__cta-secondary {
+    width: 100%;
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
   .hero__title {
-    font-size: clamp(2.2rem, 9vw, 3rem);
+    font-size: clamp(2rem, 8.5vw, 2.75rem);
+  }
+  .hero__content {
+    padding-top: calc(var(--header-h) + 1.25rem);
+  }
+}
+
+/* ── Sector Cards Responsive Grid ── */
+.sector-home-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (max-width: 990px) {
+  .sector-home-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .sector-home-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* ── Palace Feature Grid ── */
+.palace-feature-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+}
+
+@media (max-width: 860px) {
+  .palace-feature-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ── Direct Action Strip ── */
+.home-action-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .home-action-strip {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+  .home-action-strip > div:last-child {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .home-action-strip .btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 

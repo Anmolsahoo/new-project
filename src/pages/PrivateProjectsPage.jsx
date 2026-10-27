@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { RAW_MATERIALS } from '../data/rawMaterials';
 import { COMPANY, getWhatsAppURL } from '../config/company';
+import '../styles/projects.css';
 
 const INR = new Intl.NumberFormat('en-IN', {
   style: 'currency',
@@ -124,14 +125,7 @@ export default function PrivateProjectsPage() {
       {/* Main Section */}
       <section className="section section--warm">
         <div className="container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 380px',
-              gap: '2.5rem',
-              alignItems: 'start',
-            }}
-          >
+          <div className="private-materials-grid">
             {/* Left: Materials Table & Inventory */}
             <div>
               {/* How it Works / Instructions Box */}
