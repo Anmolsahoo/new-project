@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import {
@@ -249,7 +249,7 @@ export default function HomePage() {
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
                   Multi-storey office complexes, warehouses, industrial heavy steel framing, and commercial drawing approval coordination.
                 </p>
-                <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-light)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-light)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
                   <Link to="/projects/commercial" className="btn btn-navy btn-sm">
                     View Commercial <ArrowRight size={14} />
                   </Link>
@@ -287,7 +287,7 @@ export default function HomePage() {
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
                   Custom duplex residences, luxury family villas, modern apartments, false ceilings, UPVC windows, and architectural woodwork.
                 </p>
-                <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-light)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-light)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
                   <Link to="/projects/residential" className="btn btn-navy btn-sm">
                     View Residential <ArrowRight size={14} />
                   </Link>
@@ -331,7 +331,7 @@ export default function HomePage() {
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
                   Check available construction raw materials (cement, TMT steel, bricks, sand, granite, tiles), compute live amounts, and send an instant order directly via WhatsApp.
                 </p>
-                <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-light)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-light)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
                   <Link to="/projects/private" className="btn btn-primary btn-sm">
                     View Materials &amp; Rates <ArrowRight size={14} />
                   </Link>
