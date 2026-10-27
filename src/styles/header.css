@@ -148,36 +148,45 @@
 
 @media (max-width: 600px) {
   .header {
-    height: 70px;
+    height: 64px;
   }
   .header__brand-logo-img {
-    width: 38px;
-    height: 38px;
-  }
-  .header__right-logo-img {
     width: 36px;
     height: 36px;
+  }
+  .header__right-logo-img {
+    width: 34px;
+    height: 34px;
   }
   .header__logo-snc {
     font-size: 1.25rem;
   }
   .header__logo-sub {
-    font-size: 0.46rem;
-    letter-spacing: 0.16em;
+    font-size: 0.44rem;
+    letter-spacing: 0.12em;
   }
   .header__est-bold {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
   }
   .header__est-badge {
-    padding-left: 0.5rem;
+    padding-left: 0.45rem;
   }
   .header__controls {
     gap: 0.65rem;
   }
 }
 
-@media (max-width: 440px) {
-  .header__logo-text-wrap {
+@media (max-width: 420px) {
+  .header__est-badge {
+    display: none;
+  }
+  .header__logo-sub {
+    display: none;
+  }
+}
+
+@media (max-width: 340px) {
+  .header__logo-snc {
     display: none;
   }
 }

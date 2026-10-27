@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+﻿import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight, CheckCircle2, FileCheck2, Building2 } from 'lucide-react';
 import { COMPANY } from '../config/company';

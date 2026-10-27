@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // COMPANY CONFIGURATION — SRINIVAS NAYAK AND CONSTRUCTION PVT. LTD.
 // Authoritative client-supplied business information & configuration
 // ============================================================

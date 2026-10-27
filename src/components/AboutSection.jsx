@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+﻿import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Shield, Award, CheckCircle2, UserCheck, ArrowUpRight } from 'lucide-react';
 import { COMPANY, getWhatsAppURL } from '../config/company';

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import ContactSection from '../components/ContactSection';
 import { COMPANY } from '../config/company';
 

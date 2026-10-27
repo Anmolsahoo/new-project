@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+﻿import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, MapPin, Phone, MessageCircle, Info, Package } from 'lucide-react';
 import { COMPANY, getWhatsAppURL } from '../config/company';

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle, MessageCircle, Phone } from 'lucide-react';
 import { FAQS_DATA } from '../data/faqs';

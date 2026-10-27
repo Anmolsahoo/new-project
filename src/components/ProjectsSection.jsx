@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, ArrowRight, MessageCircle, AlertCircle } from 'lucide-react';
 import { PROJECTS, PROJECT_CATEGORIES } from '../data/projects';

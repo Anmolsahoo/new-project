@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react';
+﻿import { MessageCircle } from 'lucide-react';
 import { getWhatsAppURL } from '../config/company';
 import '../styles/contact-footer.css';
 

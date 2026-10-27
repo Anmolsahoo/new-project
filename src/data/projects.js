@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // PROJECTS DATA — DEMONSTRATION & ARCHITECTURAL BENCHMARK PORTFOLIO
 // NOTE: These projects serve as demonstration prototypes showcasing
 // SNC's engineering capabilities across residential, commercial,

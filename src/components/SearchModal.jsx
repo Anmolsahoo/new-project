@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X, ArrowRight, Building, Wrench, Package, FileText, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';

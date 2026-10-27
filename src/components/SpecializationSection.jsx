@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+﻿import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Crown, Sparkles, ArrowRight, MessageCircle, Shield } from 'lucide-react';
 import { COMPANY, getWhatsAppURL } from '../config/company';

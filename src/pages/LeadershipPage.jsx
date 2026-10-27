@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { UserCheck, Phone, Mail, MessageCircle, ShieldCheck, HardHat, Award } from 'lucide-react';
 import { COMPANY, getWhatsAppURL } from '../config/company';
 

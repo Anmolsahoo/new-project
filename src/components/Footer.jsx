@@ -1,4 +1,4 @@
-import { MessageCircle, Phone, Mail, MapPin, ExternalLink, ShieldCheck } from 'lucide-react';
+﻿import { MessageCircle, Phone, Mail, MapPin, ExternalLink, ShieldCheck } from 'lucide-react';
 import { COMPANY, getWhatsAppURL } from '../config/company';
 import '../styles/contact-footer.css';
 

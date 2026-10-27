@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // FAQS DATA — SRINIVAS NAYAK AND CONSTRUCTION PVT. LTD.
 // Frequently asked questions regarding civil construction,
 // drawing approvals, palace architecture, materials, and CPWD standards

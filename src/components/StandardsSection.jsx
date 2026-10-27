@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+﻿import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ShieldCheck, Ruler, CheckCircle2, ClipboardCheck, Scale } from 'lucide-react';
 import { COMPANY } from '../config/company';
