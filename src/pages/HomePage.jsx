@@ -27,7 +27,7 @@ const HERO_SLIDES = [
     subtitle: 'From civil design and structural steelwork to turnkey building development aligned with applicable CPWD guidelines.',
     link: '/about',
     ctaText: 'Read more',
-    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=2000&q=85',
+    image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=2000&q=85',
   },
   {
     id: 2,
@@ -81,6 +81,10 @@ export default function HomePage() {
               exit={{ opacity: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               loading="eager"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=85';
+              }}
             />
           </AnimatePresence>
         </div>
@@ -239,6 +243,10 @@ export default function HomePage() {
                   src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
                   alt="Commercial Construction by SNC"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80';
+                  }}
                 />
                 <span className="sector-home-card__badge">Commercial Sector</span>
               </div>
@@ -277,6 +285,10 @@ export default function HomePage() {
                   src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80"
                   alt="Residential Construction by SNC"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80';
+                  }}
                 />
                 <span className="sector-home-card__badge">Residential Sector</span>
               </div>
@@ -313,9 +325,13 @@ export default function HomePage() {
             >
               <div style={{ position: 'relative', height: '230px', overflow: 'hidden' }}>
                 <img
-                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80"
+                  src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80"
                   alt="Raw Materials Supply and Pricing"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80';
+                  }}
                 />
                 <span
                   className="sector-home-card__badge"
@@ -379,6 +395,10 @@ export default function HomePage() {
                 src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1000&q=85"
                 alt="Palace Architecture by SNC"
                 style={{ width: '100%', height: '360px', objectFit: 'cover' }}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85';
+                }}
               />
               <div style={{ position: 'absolute', bottom: '1.25rem', left: '1.25rem', padding: '0.6rem 1rem', background: 'rgba(6, 19, 36, 0.88)', borderLeft: '3px solid var(--gold)', color: '#fff', fontSize: '0.8rem', fontWeight: 700 }}>
                 High-End Architectural Benchmark

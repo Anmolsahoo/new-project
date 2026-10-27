@@ -1,4 +1,4 @@
-﻿import { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight, CheckCircle2, FileCheck2, Building2 } from 'lucide-react';
 import { COMPANY } from '../config/company';
@@ -112,7 +112,7 @@ export default function IntroSection() {
 
               <div className="about__image-main">
                 <img
-                  src="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=1000&q=85"
+                  src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1000&q=85"
                   alt="Precision construction by Srinivas Nayak and Construction"
                   loading="lazy"
                 />

@@ -1,4 +1,4 @@
-﻿import { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Shield, Award, CheckCircle2, UserCheck, ArrowUpRight } from 'lucide-react';
 import { COMPANY, getWhatsAppURL } from '../config/company';
@@ -57,7 +57,7 @@ export default function AboutSection() {
                   loading="lazy"
                   onError={(e) => {
                     e.currentTarget.src =
-                      'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=900&q=80';
+                      'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=900&q=80';
                   }}
                 />
               </div>

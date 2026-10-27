@@ -1,4 +1,4 @@
-﻿import { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import {
   Building2,
@@ -26,7 +26,7 @@ const EXPERTISE_PILLARS = [
       'Fly-ash & red clay brick masonry with precision curing',
       'Structural safety inspection aligned with CPWD standards',
     ],
-    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=1000&q=85',
+    image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1000&q=85',
   },
   {
     id: 'structural-steelwork',
