@@ -283,6 +283,11 @@ export default function ExpertiseSection() {
               <img
                 src={activePillar.image}
                 alt={activePillar.title}
+                loading="lazy"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=85';
+                }}
                 style={{
                   width: '100%',
                   height: '100%',

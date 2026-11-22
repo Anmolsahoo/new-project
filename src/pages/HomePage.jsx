@@ -43,8 +43,8 @@ const HERO_SLIDES = [
     counter: '03 / 03',
     headline: 'Structural Steelwork, Metal Fabrication & Roofing Trusses',
     subtitle: 'High-tensile industrial steel framing, certified welding, heavy gantry girders, and clear-span tubular roof solutions.',
-    link: '/projects/commercial',
-    ctaText: 'View Steel & Fabrication',
+    link: '/commercial',
+    ctaText: 'View Industrial & Steel',
     image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=85',
   },
 ];
@@ -258,7 +258,7 @@ export default function HomePage() {
                   Multi-storey office complexes, warehouses, industrial heavy steel framing, and commercial drawing approval coordination.
                 </p>
                 <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-light)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  <Link to="/projects/commercial" className="btn btn-navy btn-sm">
+                  <Link to="/commercial" className="btn btn-navy btn-sm">
                     View Commercial <ArrowRight size={14} />
                   </Link>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--gold-dark)' }}>Turnkey Civil</span>
@@ -300,7 +300,7 @@ export default function HomePage() {
                   Custom duplex residences, luxury family villas, modern apartments, false ceilings, UPVC windows, and architectural woodwork.
                 </p>
                 <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-light)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  <Link to="/projects/residential" className="btn btn-navy btn-sm">
+                  <Link to="/residential" className="btn btn-navy btn-sm">
                     View Residential <ArrowRight size={14} />
                   </Link>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--gold-dark)' }}>Villa Specialist</span>

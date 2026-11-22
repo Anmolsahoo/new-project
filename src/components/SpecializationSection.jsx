@@ -47,6 +47,11 @@ export default function SpecializationSection() {
         <img
           src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=2000&q=85"
           alt="Palace and Premium Architectural Construction Benchmark"
+          loading="lazy"
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85';
+          }}
           style={{
             width: '100%',
             height: '100%',

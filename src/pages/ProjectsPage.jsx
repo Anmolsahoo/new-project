@@ -176,6 +176,11 @@ export default function ProjectsPage() {
                         <img
                           src={project.image}
                           alt={project.title}
+                          loading="lazy"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80';
+                          }}
                           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
                         <span className="project-card__category">

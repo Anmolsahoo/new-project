@@ -115,6 +115,10 @@ export default function IntroSection() {
                   src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1000&q=85"
                   alt="Precision construction by Srinivas Nayak and Construction"
                   loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=85';
+                  }}
                 />
               </div>
 
@@ -123,6 +127,10 @@ export default function IntroSection() {
                   src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=85"
                   alt="Architectural structure inspection"
                   loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=600&q=85';
+                  }}
                 />
               </div>
 

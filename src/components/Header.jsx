@@ -257,13 +257,13 @@ export default function Header() {
                   <h3 className="mega-menu__col-title">Projects</h3>
                   <ul className="mega-menu__list">
                     <li>
-                      <button onClick={() => handleNavClick('/projects/commercial')} className="mega-menu__item-link">
-                        Commercial
+                      <button onClick={() => handleNavClick('/commercial')} className="mega-menu__item-link">
+                        Commercial &amp; Industrial Units
                       </button>
                     </li>
                     <li>
-                      <button onClick={() => handleNavClick('/projects/residential')} className="mega-menu__item-link">
-                        Residential
+                      <button onClick={() => handleNavClick('/residential')} className="mega-menu__item-link">
+                        Residential &amp; Villas
                       </button>
                     </li>
                     <li>

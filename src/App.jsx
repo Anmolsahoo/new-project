@@ -14,6 +14,7 @@ import ExpertisePage from './pages/ExpertisePage';
 import ProjectsPage from './pages/ProjectsPage';
 import PrivateProjectsPage from './pages/PrivateProjectsPage';
 import ResidentialPage from './pages/ResidentialPage';
+import CommercialPage from './pages/CommercialPage';
 import ContactPage from './pages/ContactPage';
 
 import './styles/global.css';
@@ -46,6 +47,8 @@ export default function App() {
             <Route path="/faqs" element={<FaqsPage />} />
             <Route path="/expertise" element={<ExpertisePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/commercial" element={<CommercialPage />} />
+            <Route path="/projects/commercial" element={<CommercialPage />} />
             <Route path="/residential" element={<ResidentialPage />} />
             <Route path="/projects/residential" element={<ResidentialPage />} />
             <Route path="/projects/private" element={<PrivateProjectsPage />} />

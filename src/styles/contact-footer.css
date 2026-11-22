@@ -418,6 +418,9 @@
 
 @media (max-width: 900px) {
   .footer__top { grid-template-columns: 1fr 1fr; }
+  .wa-float__tooltip {
+    display: none !important;
+  }
 }
 
 @media (max-width: 600px) {
@@ -436,7 +439,11 @@
     height: 50px;
   }
   .wa-float__tooltip {
-    display: none;
+    display: none !important;
+  }
+  .cookie-banner__text {
+    min-width: 0 !important;
+    width: 100% !important;
   }
 }
 

@@ -1,22 +1,20 @@
-﻿import { MessageCircle, Phone, Mail, MapPin, ExternalLink, ShieldCheck } from 'lucide-react';
+﻿import { Link } from 'react-router-dom';
+import { MessageCircle, Phone, Mail, MapPin, ExternalLink, ShieldCheck } from 'lucide-react';
 import { COMPANY, getWhatsAppURL } from '../config/company';
 import '../styles/contact-footer.css';
 
 const QUICK_LINKS = [
-  { label: 'Home',                  href: '#home' },
-  { label: 'About Company',         href: '#about' },
-  { label: '14 Core Services',       href: '#services' },
-  { label: 'Palace Specialization', href: '#specialization' },
-  { label: 'Engineering Expertise', href: '#expertise' },
-  { label: 'Project Portfolio',     href: '#projects' },
-  { label: 'Working Process',       href: '#process' },
-  { label: 'Quality Standards',     href: '#standards' },
-  { label: 'Contact Us',            href: '#contact' },
+  { label: 'Home',                          to: '/' },
+  { label: 'Commercial & Industrial Units', to: '/commercial' },
+  { label: 'Residential & Villas (JSW Style)', to: '/residential' },
+  { label: 'Raw Materials & Rates',         to: '/projects/private' },
+  { label: 'About Company',                 to: '/about' },
+  { label: 'Leadership',                    to: '/leadership' },
+  { label: 'Engineering Expertise',         to: '/expertise' },
+  { label: 'All Projects',                  to: '/projects' },
+  { label: 'Frequently Asked Questions',    to: '/faqs' },
+  { label: 'Contact Us',                    to: '/contact' },
 ];
-
-function scrollTo(href) {
-  document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-}
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -62,17 +60,10 @@ export default function Footer() {
             <div className="footer__section-title">Navigation</div>
             <ul className="footer__links">
               {QUICK_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="footer__link"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollTo(link.href);
-                    }}
-                  >
+                <li key={link.to}>
+                  <Link to={link.to} className="footer__link">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -84,17 +75,13 @@ export default function Footer() {
             <ul className="footer__links" style={{ maxHeight: '360px', overflowY: 'auto', paddingRight: '0.5rem' }}>
               {COMPANY.services.map((s) => (
                 <li key={s.id}>
-                  <a
-                    href="#services"
+                  <Link
+                    to={`/expertise#${s.id}`}
                     className="footer__link"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollTo('#services');
-                    }}
                     style={{ fontSize: '0.8rem' }}
                   >
                     {s.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -156,9 +143,9 @@ export default function Footer() {
             &copy; {year} {COMPANY.name}. All rights reserved.
           </p>
           <nav className="footer__legal" aria-label="Legal & Privacy Links">
-            <a href="#standards">Quality Commitment</a>
-            <a href="#cookies">Cookie Preferences</a>
-            <a href="#about">Corporate Registration</a>
+            <Link to="/about">Corporate Registration</Link>
+            <Link to="/expertise">Quality Commitment</Link>
+            <Link to="/faqs">Client FAQs</Link>
           </nav>
         </div>
       </div>

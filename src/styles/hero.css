@@ -24,7 +24,9 @@
   height: 100%;
   object-fit: cover;
   object-position: center 35%;
-  transform: scale(1.04);
+  transform: scale(1.04) translateZ(0);
+  -webkit-transform: scale(1.04) translateZ(0);
+  will-change: transform;
   transition: transform 8s ease-out;
 }
 

@@ -1,6 +1,6 @@
 ﻿import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X, ArrowRight, Building, Wrench, Package, FileText, ChevronRight, Home } from 'lucide-react';
+import { Search, X, ArrowRight, Building, Wrench, Package, FileText, ChevronRight, Home, Factory } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { COMPANY } from '../config/company';
 import { PROJECTS } from '../data/projects';
@@ -132,20 +132,23 @@ export default function SearchModal({ isOpen, onClose }) {
                 <div className="search-modal__nav-quick">
                   <span className="search-modal__section-title">Direct Page Links</span>
                   <div className="search-modal__nav-grid">
-                    <button onClick={() => handleSelect('/about')} className="search-modal__nav-item">
-                      <FileText size={16} /> <span>About The Company</span> <ChevronRight size={14} />
-                    </button>
-                    <button onClick={() => handleSelect('/leadership')} className="search-modal__nav-item">
-                      <Building size={16} /> <span>Executive Leadership</span> <ChevronRight size={14} />
-                    </button>
-                    <button onClick={() => handleSelect('/expertise')} className="search-modal__nav-item">
-                      <Wrench size={16} /> <span>Engineering Expertise</span> <ChevronRight size={14} />
+                    <button onClick={() => handleSelect('/commercial')} className="search-modal__nav-item">
+                      <Factory size={16} /> <span>Commercial &amp; Industrial Units</span> <ChevronRight size={14} />
                     </button>
                     <button onClick={() => handleSelect('/projects/residential')} className="search-modal__nav-item">
                       <Home size={16} /> <span>Turnkey Residential Homes</span> <ChevronRight size={14} />
                     </button>
                     <button onClick={() => handleSelect('/projects/private')} className="search-modal__nav-item">
                       <Package size={16} /> <span>Raw Materials &amp; Prices</span> <ChevronRight size={14} />
+                    </button>
+                    <button onClick={() => handleSelect('/expertise')} className="search-modal__nav-item">
+                      <Wrench size={16} /> <span>Engineering Expertise</span> <ChevronRight size={14} />
+                    </button>
+                    <button onClick={() => handleSelect('/about')} className="search-modal__nav-item">
+                      <FileText size={16} /> <span>About The Company</span> <ChevronRight size={14} />
+                    </button>
+                    <button onClick={() => handleSelect('/leadership')} className="search-modal__nav-item">
+                      <Building size={16} /> <span>Executive Leadership</span> <ChevronRight size={14} />
                     </button>
                   </div>
                 </div>
