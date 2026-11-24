@@ -140,7 +140,7 @@ export const INITIAL_GALLERY_ITEMS = [
     fileType: 'PDF',
     fileSize: '4.8 MB',
     url: '#snc-profile-download',
-    caption: 'Official corporate dossier containing CIN (U41001OD2023PTC044544), MSME registrations, director credentials, machine fleet index, and turnkey project capabilities.',
+    caption: 'Official corporate dossier containing CIN (U41001OD2023PTC044544), GSTIN (21BPSPN6368E1ZL), director credentials, machine fleet index, and turnkey project capabilities.',
     date: '2026-03-01',
     author: 'Director Er. Srinivas Nayak',
     featured: true,

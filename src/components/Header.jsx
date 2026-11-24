@@ -68,7 +68,7 @@ export default function Header() {
               />
               <div className="header__logo-text-wrap">
                 <div className="header__logo-mark">
-                  <span className="header__logo-snc">SNC</span>
+                  <span className="header__logo-snc">Srinivas Nayak</span>
                   <span className="header__logo-sub">CONSTRUCTION</span>
                 </div>
                 <div className="header__est-badge">
@@ -134,7 +134,7 @@ export default function Header() {
                   />
                   <div className="header__logo-text-wrap">
                     <div className="header__logo-mark">
-                      <span className="header__logo-snc">SNC</span>
+                      <span className="header__logo-snc">Srinivas Nayak</span>
                       <span className="header__logo-sub">CONSTRUCTION</span>
                     </div>
                     <div className="header__est-badge">
@@ -292,7 +292,7 @@ export default function Header() {
                     </div>
                     <div className="mega-menu__statutory">
                       <span>CIN: {COMPANY.cin}</span>
-                      <span>MSME: {COMPANY.msmeRegistrations[0]}</span>
+                      <span>GSTIN: {COMPANY.gstin}</span>
                     </div>
                   </div>
                 </div>

@@ -92,19 +92,19 @@ export default function AboutPage() {
 
                 <div>
                   <div style={{ fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold-dark)' }}>
-                    MSME UDYAM Registration (Primary)
+                    Technical Execution Alignment
                   </div>
                   <div style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--navy)', marginTop: '2px' }}>
-                    {COMPANY.msmeRegistrations[0]}
+                    CPWD Guidelines &amp; Specifications
                   </div>
                 </div>
 
                 <div>
                   <div style={{ fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold-dark)' }}>
-                    MSME UDYAM Registration (Secondary)
+                    Registered Operational Hub
                   </div>
                   <div style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--navy)', marginTop: '2px' }}>
-                    {COMPANY.msmeRegistrations[1]}
+                    {COMPANY.address.city}, Sundargarh, Odisha
                   </div>
                 </div>
 

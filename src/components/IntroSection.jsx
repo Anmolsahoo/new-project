@@ -77,8 +77,8 @@ export default function IntroSection() {
               <div className="intro__reg-item">
                 <Building2 size={18} className="intro__reg-icon" />
                 <div>
-                  <span className="intro__reg-label">MSME Registration</span>
-                  <span className="intro__reg-value">{COMPANY.msmeRegistrations[0]}</span>
+                  <span className="intro__reg-label">Registered Office</span>
+                  <span className="intro__reg-value">{COMPANY.address.city}, Odisha</span>
                 </div>
               </div>
 

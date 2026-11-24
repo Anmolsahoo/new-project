@@ -897,7 +897,6 @@ export default function CommercialPage() {
               <div style={{ marginTop: '1rem', fontSize: '0.78rem', color: 'rgba(255, 255, 255, 0.55)', display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
                 <span><strong>CIN:</strong> {COMPANY.cin}</span>
                 <span><strong>GSTIN:</strong> {COMPANY.gstin}</span>
-                <span><strong>MSME:</strong> {COMPANY.msmeRegistrations[0]}</span>
               </div>
             </div>
 

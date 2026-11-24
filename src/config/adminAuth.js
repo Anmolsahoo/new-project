@@ -7,7 +7,7 @@ const AUTH_KEY = 'snc_admin_auth_session';
 const PASS_KEY = 'snc_admin_custom_credentials';
 
 const DEFAULT_USERNAME = 'admin';
-const DEFAULT_PASSWORD = 'snc@admin2024';
+const DEFAULT_PASSWORD = 'snc@1234';
 
 export function getAdminCredentials() {
   try {

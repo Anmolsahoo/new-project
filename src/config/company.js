@@ -13,10 +13,6 @@ export const COMPANY = {
 
   // === STATUTORY & REGISTRATION DETAILS (Client-Supplied) ===
   cin: "U41001OD2023PTC044544",
-  msmeRegistrations: [
-    "UDYAM-OD-30-0025620",
-    "UDYAM-OD-30-0004690",
-  ],
   gstin: "21BPSPN6368E1ZL",
 
   // === LEADERSHIP ===
@@ -49,7 +45,7 @@ export const COMPANY = {
   accreditations: ["SMRC", "RBS"],
 
   // === CONTACT DETAILS ===
-  phones: ["+91 70080 87497", "+91 70772 13963", "+91 90408 46265"],
+  phones: ["+91 70080 87497", "+91 70772 13963"],
   whatsappPrimary: "917008087497",
   whatsappSecondary: "917077213963",
   email: "srinivasnayak314@gmail.com",

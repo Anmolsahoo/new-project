@@ -74,7 +74,7 @@ const DOCUMENT_CATEGORIES = [
 
 export default function AdminPage() {
   const navigate = useNavigate();
-  const [authed, setAuthed] = useState(() => isAuthenticated());
+  const [authed, setAuthed] = useState(false);
   const [loginUser, setLoginUser] = useState('');
   const [loginPass, setLoginPass] = useState('');
   const [loginError, setLoginError] = useState('');
@@ -459,17 +459,9 @@ export default function AdminPage() {
             </form>
 
             <div style={{ marginTop: '1.75rem', paddingTop: '1.25rem', borderTop: '1px solid var(--border-light)', textAlign: 'center' }}>
-              <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
-                Default Demonstration Credentials:
-              </div>
-              <code style={{ background: 'var(--warm-white)', padding: '0.3rem 0.6rem', borderRadius: '3px', fontSize: '0.76rem', color: 'var(--navy)' }}>
-                User: admin &bull; Pass: snc@admin2024
-              </code>
-              <div style={{ marginTop: '1rem' }}>
-                <Link to="/" style={{ fontSize: '0.78rem', color: 'var(--navy-royal)', fontWeight: 600 }}>
-                  &larr; Return to Public Website
-                </Link>
-              </div>
+              <Link to="/" style={{ fontSize: '0.82rem', color: 'var(--navy-royal)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                &larr; Return to Public Website
+              </Link>
             </div>
           </motion.div>
         </div>

@@ -134,7 +134,7 @@ export default function Footer() {
 
         {/* Regulatory Disclaimer & Copyright */}
         <div style={{ marginBottom: '1.5rem', fontSize: '0.74rem', color: 'rgba(255, 255, 255, 0.4)', lineHeight: 1.6 }}>
-          <strong style={{ color: 'rgba(255, 255, 255, 0.6)' }}>Factual Disclaimer:</strong> All registration numbers (CIN, MSME UDYAM, GSTIN) and ISO certification statements are published as provided by the client. Projects displayed during initial release represent demonstration architectural benchmarks. Technical execution is aligned with applicable CPWD guidelines.
+          <strong style={{ color: 'rgba(255, 255, 255, 0.6)' }}>Factual Disclaimer:</strong> All registration numbers (CIN, GSTIN) and ISO certification statements are published as provided by the client. Projects displayed during initial release represent demonstration architectural benchmarks. Technical execution is aligned with applicable CPWD guidelines.
         </div>
 
         <div className="footer__bottom">

@@ -151,8 +151,8 @@ export default function HeroSection() {
           <div className="hero__strip-item">
             <Sparkles size={20} className="hero__strip-icon" />
             <div>
-              <div className="hero__strip-label">MSME Registered</div>
-              <div className="hero__strip-sub">{COMPANY.msmeRegistrations[0]}</div>
+              <div className="hero__strip-label">GSTIN Registered</div>
+              <div className="hero__strip-sub">{COMPANY.gstin}</div>
             </div>
           </div>
 
