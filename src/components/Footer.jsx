@@ -1,5 +1,5 @@
 ﻿import { Link } from 'react-router-dom';
-import { MessageCircle, Phone, Mail, MapPin, ExternalLink, ShieldCheck } from 'lucide-react';
+import { MessageCircle, Phone, Mail, MapPin, ExternalLink, ShieldCheck, Lock, Image as ImageIcon } from 'lucide-react';
 import { COMPANY, getWhatsAppURL } from '../config/company';
 import '../styles/contact-footer.css';
 
@@ -8,6 +8,7 @@ const QUICK_LINKS = [
   { label: 'Commercial & Industrial Units', to: '/commercial' },
   { label: 'Residential & Villas (JSW Style)', to: '/residential' },
   { label: 'Raw Materials & Rates',         to: '/projects/private' },
+  { label: 'Project Media Gallery',         to: '/gallery' },
   { label: 'About Company',                 to: '/about' },
   { label: 'Leadership',                    to: '/leadership' },
   { label: 'Engineering Expertise',         to: '/expertise' },
@@ -48,8 +49,6 @@ export default function Footer() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', fontSize: '0.74rem', color: 'rgba(255, 255, 255, 0.55)' }}>
               <div><strong style={{ color: 'var(--gold-light)' }}>CIN:</strong> {COMPANY.cin}</div>
-              <div><strong style={{ color: 'var(--gold-light)' }}>MSME 1:</strong> {COMPANY.msmeRegistrations[0]}</div>
-              <div><strong style={{ color: 'var(--gold-light)' }}>MSME 2:</strong> {COMPANY.msmeRegistrations[1]}</div>
               <div><strong style={{ color: 'var(--gold-light)' }}>GSTIN:</strong> {COMPANY.gstin}</div>
               <div><strong style={{ color: 'var(--gold-light)' }}>Category:</strong> {COMPANY.businessCategory}</div>
             </div>
@@ -145,7 +144,10 @@ export default function Footer() {
           <nav className="footer__legal" aria-label="Legal & Privacy Links">
             <Link to="/about">Corporate Registration</Link>
             <Link to="/expertise">Quality Commitment</Link>
-            <Link to="/faqs">Client FAQs</Link>
+            <Link to="/gallery">Media Vault</Link>
+            <Link to="/admin" style={{ color: 'var(--gold)', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+              <Lock size={12} /> Staff Admin Portal
+            </Link>
           </nav>
         </div>
       </div>

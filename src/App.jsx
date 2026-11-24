@@ -15,6 +15,8 @@ import ProjectsPage from './pages/ProjectsPage';
 import PrivateProjectsPage from './pages/PrivateProjectsPage';
 import ResidentialPage from './pages/ResidentialPage';
 import CommercialPage from './pages/CommercialPage';
+import GalleryPage from './pages/GalleryPage';
+import AdminPage from './pages/AdminPage';
 import ContactPage from './pages/ContactPage';
 
 import './styles/global.css';
@@ -52,6 +54,9 @@ export default function App() {
             <Route path="/residential" element={<ResidentialPage />} />
             <Route path="/projects/residential" element={<ResidentialPage />} />
             <Route path="/projects/private" element={<PrivateProjectsPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/projects/gallery" element={<GalleryPage />} />
+            <Route path="/admin" element={<AdminPage />} />
             <Route path="/projects/:sector" element={<ProjectsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             {/* Fallback */}

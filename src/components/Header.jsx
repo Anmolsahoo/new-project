@@ -267,6 +267,11 @@ export default function Header() {
                       </button>
                     </li>
                     <li>
+                      <button onClick={() => handleNavClick('/gallery')} className="mega-menu__item-link">
+                        Project Media Gallery (Photos, Videos &amp; Docs)
+                      </button>
+                    </li>
+                    <li>
                       <button onClick={() => handleNavClick('/projects/private')} className="mega-menu__item-link mega-menu__item-link--highlight">
                         Private &bull; Raw Materials &amp; Prices
                         <ArrowUpRight size={15} style={{ marginLeft: 6, display: 'inline' }} />

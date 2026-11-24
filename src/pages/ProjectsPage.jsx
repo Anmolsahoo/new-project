@@ -1,7 +1,7 @@
 ﻿import { useState, useEffect } from 'react';
 import { useLocation, useParams, Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowRight, Package, Building, Home, MapPin, MessageCircle, AlertCircle } from 'lucide-react';
+import { ArrowRight, Package, Building, Home, MapPin, MessageCircle, AlertCircle, Layers } from 'lucide-react';
 import { PROJECTS, PROJECT_CATEGORIES } from '../data/projects';
 import ProjectDetails from '../components/ProjectDetails';
 import { getWhatsAppURL } from '../config/company';
@@ -113,27 +113,38 @@ export default function ProjectsPage() {
                     </button>
                   </div>
 
-                  {/* Private & Raw Materials CTA banner link */}
-                  <Link
-                    to="/projects/private"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.5rem',
-                      padding: '0.65rem 1.25rem',
-                      background: 'var(--gold)',
-                      color: 'var(--navy-darkest)',
-                      fontSize: '0.82rem',
-                      fontWeight: 800,
-                      borderRadius: 'var(--radius-sm)',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.06em',
-                    }}
-                  >
-                    <Package size={16} />
-                    <span>Private: View Raw Materials &amp; Prices</span>
-                    <ArrowRight size={14} />
-                  </Link>
+                  <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
+                    <Link
+                      to="/gallery"
+                      className="btn btn-sm btn-outline-gold"
+                      style={{ padding: '0.65rem 1.15rem' }}
+                    >
+                      <Layers size={14} />
+                      <span>Photos, Videos &amp; Docs</span>
+                    </Link>
+
+                    {/* Private & Raw Materials CTA banner link */}
+                    <Link
+                      to="/projects/private"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        padding: '0.65rem 1.25rem',
+                        background: 'var(--gold)',
+                        color: 'var(--navy-darkest)',
+                        fontSize: '0.82rem',
+                        fontWeight: 800,
+                        borderRadius: 'var(--radius-sm)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.06em',
+                      }}
+                    >
+                      <Package size={16} />
+                      <span>Raw Materials &amp; Prices</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Demonstration Alert Banner */}

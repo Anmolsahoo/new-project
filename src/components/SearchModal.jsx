@@ -132,6 +132,9 @@ export default function SearchModal({ isOpen, onClose }) {
                 <div className="search-modal__nav-quick">
                   <span className="search-modal__section-title">Direct Page Links</span>
                   <div className="search-modal__nav-grid">
+                    <button onClick={() => handleSelect('/gallery')} className="search-modal__nav-item">
+                      <FileText size={16} /> <span>Project Media Gallery (Photos, Videos, Docs)</span> <ChevronRight size={14} />
+                    </button>
                     <button onClick={() => handleSelect('/commercial')} className="search-modal__nav-item">
                       <Factory size={16} /> <span>Commercial &amp; Industrial Units</span> <ChevronRight size={14} />
                     </button>
@@ -144,11 +147,8 @@ export default function SearchModal({ isOpen, onClose }) {
                     <button onClick={() => handleSelect('/expertise')} className="search-modal__nav-item">
                       <Wrench size={16} /> <span>Engineering Expertise</span> <ChevronRight size={14} />
                     </button>
-                    <button onClick={() => handleSelect('/about')} className="search-modal__nav-item">
-                      <FileText size={16} /> <span>About The Company</span> <ChevronRight size={14} />
-                    </button>
-                    <button onClick={() => handleSelect('/leadership')} className="search-modal__nav-item">
-                      <Building size={16} /> <span>Executive Leadership</span> <ChevronRight size={14} />
+                    <button onClick={() => handleSelect('/admin')} className="search-modal__nav-item">
+                      <Building size={16} /> <span>Staff Admin Portal</span> <ChevronRight size={14} />
                     </button>
                   </div>
                 </div>

@@ -167,8 +167,7 @@ export default function ContactSection() {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.75)' }}>
                 <div><strong>CIN:</strong> {COMPANY.cin}</div>
-                <div><strong>MSME 1:</strong> {COMPANY.msmeRegistrations[0]}</div>
-                <div><strong>MSME 2:</strong> {COMPANY.msmeRegistrations[1]}</div>
+                 
                 <div><strong>GSTIN:</strong> {COMPANY.gstin}</div>
               </div>
             </div>
