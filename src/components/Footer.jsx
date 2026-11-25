@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom';
+﻿import { Link, useLocation } from 'react-router-dom';
 import { MessageCircle, Phone, Mail, MapPin, ExternalLink, ShieldCheck, Lock, Image as ImageIcon } from 'lucide-react';
 import { COMPANY, getWhatsAppURL } from '../config/company';
 import '../styles/contact-footer.css';
@@ -18,6 +18,13 @@ const QUICK_LINKS = [
 ];
 
 export default function Footer() {
+  const { pathname } = useLocation();
+
+  // Do not render footer in the admin section
+  if (pathname === '/admin' || pathname.startsWith('/admin/')) {
+    return null;
+  }
+
   const year = new Date().getFullYear();
 
   return (
