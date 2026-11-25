@@ -102,19 +102,33 @@ export default function GalleryPage() {
 
   // Simulated Document Download handler
   const handleDownloadDoc = (doc) => {
-    // Generate a formatted summary text file blob if URL is a placeholder
-    if (doc.url.startsWith('#') || !doc.url.startsWith('http')) {
-      const content = `SRINIVAS NAYAK & CONSTRUCTION PVT. LTD.\nOfficial Document Vault\n=========================================\nTitle: ${doc.title}\nCategory: ${doc.category}\nFormat: ${doc.fileType || 'PDF'}\nSize: ${doc.fileSize || 'N/A'}\nDate: ${doc.date}\nAuthor: ${doc.author}\n\nTechnical Caption:\n${doc.caption}\n\n=========================================\nCompany CIN: ${COMPANY.cin}\nGSTIN: ${COMPANY.gstin}\nDirector: Er. Srinivas Nayak\nHeadquarters: Rourkela, Sundargarh, Odisha\nFor verified master blueprint / CAD drawings, please contact the engineering office directly.`;
-      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    // If it is an uploaded file (Data URL), download the real file directly
+    if (doc.url && doc.url.startsWith('data:')) {
       const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = `${doc.title.replace(/[^a-zA-Z0-9]/g, '_')}_SNC.txt`;
+      link.href = doc.url;
+      const ext = (doc.fileType || 'pdf').toLowerCase().replace(/[^a-z0-9]/g, '');
+      link.download = `${(doc.title || 'document').replace(/[^a-zA-Z0-9]/g, '_')}_SNC.${ext}`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    } else {
-      window.open(doc.url, '_blank');
+      return;
     }
+
+    // If it is a real HTTP/HTTPS link, open in new tab
+    if (doc.url && doc.url.startsWith('http')) {
+      window.open(doc.url, '_blank');
+      return;
+    }
+
+    // Fallback: Generate formatted official document manifest
+    const content = `SRINIVAS NAYAK & CONSTRUCTION PVT. LTD.\nOfficial Document Vault\n=========================================\nTitle: ${doc.title}\nCategory: ${doc.category}\nFormat: ${doc.fileType || 'PDF'}\nSize: ${doc.fileSize || 'N/A'}\nDate: ${doc.date}\nAuthor: ${doc.author}\n\nTechnical Caption:\n${doc.caption}\n\n=========================================\nCompany CIN: ${COMPANY.cin}\nGSTIN: ${COMPANY.gstin}\nDirector: Er. Srinivas Nayak\nHeadquarters: Rourkela, Sundargarh, Odisha\nFor verified master blueprint / CAD drawings, please contact the engineering office directly.`;
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${doc.title.replace(/[^a-zA-Z0-9]/g, '_')}_SNC.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -533,12 +547,22 @@ export default function GalleryPage() {
               </button>
 
               <div className="gallery-video-iframe-wrap">
-                <iframe
-                  src={activeVideo.url}
-                  title={activeVideo.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+                {activeVideo.url && (activeVideo.url.startsWith('data:video') || activeVideo.url.match(/\.(mp4|webm|ogg|mov|m4v)($|\?)/i)) ? (
+                  <video
+                    src={activeVideo.url}
+                    controls
+                    autoPlay
+                    playsInline
+                    style={{ width: '100%', height: '100%', objectFit: 'contain', background: '#000' }}
+                  />
+                ) : (
+                  <iframe
+                    src={activeVideo.url}
+                    title={activeVideo.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                )}
               </div>
 
               <div className="gallery-lightbox-footer">

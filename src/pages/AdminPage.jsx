@@ -32,6 +32,8 @@ import {
   deleteGalleryItem,
   resetGalleryDefaults,
   readFileAsDataURL,
+  compressImage,
+  generateVideoThumbnail,
   GALLERY_UPDATE_EVENT,
 } from '../data/galleryService';
 import {
@@ -117,8 +119,12 @@ export default function AdminPage() {
   const [docDate, setDocDate] = useState(() => new Date().toISOString().split('T')[0]);
   const [editingDocId, setEditingDocId] = useState(null);
 
+  const [vidFileLoading, setVidFileLoading] = useState(false);
+  const [docFileLoading, setDocFileLoading] = useState(false);
+
   // File input refs
   const imgFileInputRef = useRef(null);
+  const vidFileInputRef = useRef(null);
   const vidThumbInputRef = useRef(null);
   const docFileInputRef = useRef(null);
 
@@ -175,13 +181,15 @@ export default function AdminPage() {
     if (!file) return;
     try {
       setImgFileLoading(true);
-      const dataUrl = await readFileAsDataURL(file);
-      setImgUrl(dataUrl);
+      showToast(`Optimizing photo "${file.name}"...`);
+      const compressed = await compressImage(file, 1920, 0.85);
+      setImgUrl(compressed);
       if (!imgTitle) {
         setImgTitle(file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' '));
       }
-      showToast('Image file loaded successfully');
-    } catch {
+      showToast('Photo optimized and ready to publish.');
+    } catch (err) {
+      console.error(err);
       showToast('Error reading image file');
     } finally {
       setImgFileLoading(false);
@@ -239,20 +247,53 @@ export default function AdminPage() {
   };
 
   // ── 2. Video Handlers ──
+  const handleVidFileUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setVidFileLoading(true);
+    showToast(`Loading video "${file.name}"...`);
+
+    try {
+      const dataUrl = await readFileAsDataURL(file);
+      setVidUrl(dataUrl);
+
+      if (!vidTitle) {
+        setVidTitle(file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' '));
+      }
+
+      const sizeMB = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+
+      // Auto-extract thumbnail and duration
+      const meta = await generateVideoThumbnail(dataUrl);
+      if (meta) {
+        if (meta.thumbnail && !vidThumbnail) setVidThumbnail(meta.thumbnail);
+        if (meta.duration) setVidDuration(meta.duration);
+      }
+
+      showToast(`Video file ready (${sizeMB}). Tap publish to save.`);
+    } catch (err) {
+      console.error(err);
+      showToast('Error reading video file.');
+    } finally {
+      setVidFileLoading(false);
+    }
+  };
+
   const handleSaveVideo = (e) => {
     e.preventDefault();
     if (!vidTitle.trim() || !vidUrl.trim()) {
-      showToast('Please enter a video title and provide a valid URL.');
+      showToast('Please enter a video title and upload a video or provide a valid URL.');
       return;
     }
 
-    const embedUrl = formatVideoEmbed(vidUrl.trim());
+    const finalUrl = vidUrl.startsWith('data:') ? vidUrl.trim() : formatVideoEmbed(vidUrl.trim());
 
     if (editingVidId) {
       updateGalleryItem(editingVidId, {
         title: vidTitle.trim(),
         category: vidCategory,
-        url: embedUrl,
+        url: finalUrl,
         thumbnail: vidThumbnail.trim() || 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
         duration: vidDuration.trim(),
         caption: vidCaption.trim() || vidTitle.trim(),
@@ -265,7 +306,7 @@ export default function AdminPage() {
         type: 'video',
         title: vidTitle.trim(),
         category: vidCategory,
-        url: embedUrl,
+        url: finalUrl,
         thumbnail: vidThumbnail.trim() || 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
         duration: vidDuration.trim(),
         caption: vidCaption.trim() || vidTitle.trim(),
@@ -297,6 +338,8 @@ export default function AdminPage() {
   const handleDocFileUpload = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    setDocFileLoading(true);
+    showToast(`Reading document "${file.name}"...`);
     try {
       const dataUrl = await readFileAsDataURL(file);
       setDocUrl(dataUrl);
@@ -307,9 +350,12 @@ export default function AdminPage() {
       setDocFileSize(sizeMB);
       const ext = file.name.split('.').pop()?.toUpperCase() || 'PDF';
       setDocFileType(ext);
-      showToast(`Document "${file.name}" loaded (${sizeMB}).`);
-    } catch {
+      showToast(`Document "${file.name}" loaded (${sizeMB}). Ready to publish.`);
+    } catch (err) {
+      console.error(err);
       showToast('Error reading document file.');
+    } finally {
+      setDocFileLoading(false);
     }
   };
 
@@ -670,8 +716,8 @@ export default function AdminPage() {
                       onClick={() => imgFileInputRef.current?.click()}
                     >
                       <Upload size={20} style={{ color: 'var(--gold-dark)', marginBottom: 4 }} />
-                      <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--navy)' }}>
-                        Click to select image from computer
+                      <div style={{ fontSize: '0.86rem', fontWeight: 700, color: 'var(--navy)' }}>
+                        {imgFileLoading ? 'Processing photo...' : 'Tap to select photo from mobile gallery or camera / computer'}
                       </div>
                       <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
                         JPG, PNG, WebP supported
@@ -863,17 +909,64 @@ export default function AdminPage() {
                     </select>
                   </div>
 
+                  {/* Direct Mobile Video Upload */}
                   <div className="admin-form-group">
-                    <label className="admin-form-label">Video URL (YouTube Watch or Embed Link) *</label>
+                    <label className="admin-form-label">Upload Video from Mobile / Device</label>
+                    <div
+                      className="admin-file-dropzone"
+                      onClick={() => vidFileInputRef.current?.click()}
+                      style={{ borderColor: vidUrl.startsWith('data:video') ? 'var(--gold)' : undefined }}
+                    >
+                      <VideoIcon size={22} style={{ color: 'var(--gold-dark)', marginBottom: 4 }} />
+                      <div style={{ fontSize: '0.86rem', fontWeight: 700, color: 'var(--navy)' }}>
+                        {vidFileLoading ? 'Loading video file...' : 'Tap to select video from mobile gallery or camera'}
+                      </div>
+                      <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                        MP4, MOV, WebM, M4V supported
+                      </div>
+                      <input
+                        ref={vidFileInputRef}
+                        type="file"
+                        accept="video/*"
+                        style={{ display: 'none' }}
+                        onChange={handleVidFileUpload}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="admin-form-group">
+                    <label className="admin-form-label">Or Paste Video Web Link (YouTube / Embed / Direct MP4)</label>
                     <input
                       type="url"
-                      required
-                      placeholder="https://www.youtube.com/watch?v=... or embed URL"
-                      value={vidUrl}
+                      placeholder="https://www.youtube.com/watch?v=... or direct MP4 URL"
+                      value={vidUrl.startsWith('data:') ? '[Uploaded Local Mobile Video]' : vidUrl}
                       onChange={(e) => setVidUrl(e.target.value)}
                       className="admin-form-input"
                     />
                   </div>
+
+                  {/* Video Live Preview */}
+                  {vidUrl && (
+                    <div className="admin-form-group">
+                      <label className="admin-form-label">Live Video Preview</label>
+                      <div style={{ borderRadius: 'var(--radius-sm)', overflow: 'hidden', background: '#000', maxHeight: '180px' }}>
+                        {vidUrl.startsWith('data:video') || vidUrl.match(/\.(mp4|webm|ogg|mov|m4v)($|\?)/i) ? (
+                          <video
+                            src={vidUrl}
+                            controls
+                            playsInline
+                            style={{ width: '100%', maxHeight: '180px', objectFit: 'contain' }}
+                          />
+                        ) : (
+                          <iframe
+                            src={formatVideoEmbed(vidUrl)}
+                            title="Preview"
+                            style={{ width: '100%', height: '160px', border: 'none' }}
+                          />
+                        )}
+                      </div>
+                    </div>
+                  )}
 
                   <div className="admin-form-group">
                     <label className="admin-form-label">Video Duration</label>
@@ -1090,8 +1183,8 @@ export default function AdminPage() {
                       onClick={() => docFileInputRef.current?.click()}
                     >
                       <Upload size={20} style={{ color: 'var(--gold-dark)', marginBottom: 4 }} />
-                      <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--navy)' }}>
-                        Click to select document from computer
+                      <div style={{ fontSize: '0.86rem', fontWeight: 700, color: 'var(--navy)' }}>
+                        {docFileLoading ? 'Loading document...' : 'Tap to select document file from mobile / device'}
                       </div>
                       <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
                         PDF, DOCX, TXT, CAD files supported
@@ -1099,7 +1192,7 @@ export default function AdminPage() {
                       <input
                         ref={docFileInputRef}
                         type="file"
-                        accept=".pdf,.docx,.doc,.txt,.dwg,.xlsx"
+                        accept=".pdf,.docx,.doc,.xlsx,.xls,.txt,.dwg,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/plain"
                         style={{ display: 'none' }}
                         onChange={handleDocFileUpload}
                       />
