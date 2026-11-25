@@ -138,17 +138,23 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <p className="footer__copy">
-            &copy; {year} {COMPANY.name}. All rights reserved.
-          </p>
-          <nav className="footer__legal" aria-label="Legal & Privacy Links">
-            <Link to="/about">Corporate Registration</Link>
-            <Link to="/expertise">Quality Commitment</Link>
-            <Link to="/gallery">Media Vault</Link>
-            <Link to="/admin" style={{ color: 'var(--gold)', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-              <Lock size={12} /> Staff Admin Portal
+          <div className="footer__bottom-info">
+            <p className="footer__copy">
+              &copy; {year} {COMPANY.name}. All rights reserved.
+            </p>
+            <nav className="footer__legal" aria-label="Legal & Privacy Links">
+              <Link to="/about">Corporate Registration</Link>
+              <Link to="/expertise">Quality Commitment</Link>
+              <Link to="/gallery">Media Vault</Link>
+            </nav>
+          </div>
+
+          <div className="footer__admin-wrap">
+            <Link to="/admin" className="footer__admin-btn" aria-label="Access Staff Admin Portal">
+              <Lock size={13} className="footer__admin-btn-icon" />
+              <span>Staff Admin Portal</span>
             </Link>
-          </nav>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,13 +1,20 @@
-﻿import { MessageCircle } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 import { getWhatsAppURL } from '../config/company';
 import '../styles/contact-footer.css';
 
 export default function WhatsAppFloat() {
+  const { pathname } = useLocation();
+
+  // Hide floating WhatsApp button inside Admin portal to prevent obstructing admin forms/controls
+  if (pathname === '/admin' || pathname.startsWith('/admin/')) {
+    return null;
+  }
+
   return (
     <div className="wa-float">
       <span className="wa-float__tooltip">Chat with us</span>
       <a
-        href={getWhatsAppURL('Hello SNC! I would like to enquire about your construction services.')}
+        href={getWhatsAppURL('Hello Srinivas Nayak & Construction, I would like to enquire about your construction services.')}
         target="_blank"
         rel="noopener noreferrer"
         className="wa-float__btn"
