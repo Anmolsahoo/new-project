@@ -282,54 +282,53 @@ export default function AdminPage() {
 
   const handleSaveVideo = (e) => {
     e.preventDefault();
-    if (!vidTitle.trim() || !vidUrl.trim()) {
-      showToast('Please enter a video title and upload a video or provide a valid URL.');
+    if (!vidUrl.trim()) {
+      showToast('Please select or upload a video file or enter a video URL.');
+      return;
+    }
+    if (!vidCaption.trim()) {
+      showToast('Please write a video caption.');
       return;
     }
 
     const finalUrl = vidUrl.startsWith('data:') ? vidUrl.trim() : formatVideoEmbed(vidUrl.trim());
+    const derivedTitle = vidCaption.trim().split('\n')[0].slice(0, 60);
 
     if (editingVidId) {
       updateGalleryItem(editingVidId, {
-        title: vidTitle.trim(),
-        category: vidCategory,
+        title: derivedTitle,
+        category: 'Site Walkthrough',
         url: finalUrl,
-        thumbnail: vidThumbnail.trim() || 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
-        duration: vidDuration.trim(),
-        caption: vidCaption.trim() || vidTitle.trim(),
+        thumbnail: '',
+        duration: '',
+        caption: vidCaption.trim(),
         date: vidDate,
       });
-      showToast(`Video "${vidTitle}" updated successfully.`);
+      showToast('Video updated successfully in gallery.');
       setEditingVidId(null);
     } else {
       addGalleryItem({
         type: 'video',
-        title: vidTitle.trim(),
-        category: vidCategory,
+        title: derivedTitle,
+        category: 'Site Walkthrough',
         url: finalUrl,
-        thumbnail: vidThumbnail.trim() || 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
-        duration: vidDuration.trim(),
-        caption: vidCaption.trim() || vidTitle.trim(),
+        thumbnail: '',
+        duration: '',
+        caption: vidCaption.trim(),
         date: vidDate,
-        author: 'Admin / Er. Srinivas Nayak',
+        author: 'Er. Srinivas Nayak',
       });
-      showToast(`New video "${vidTitle}" published to frontend gallery.`);
+      showToast('New video published directly to frontend gallery.');
     }
 
-    setVidTitle('');
     setVidUrl('');
-    setVidThumbnail('');
     setVidCaption('');
   };
 
   const handleEditVideo = (vid) => {
     setEditingVidId(vid.id);
-    setVidTitle(vid.title);
-    setVidCategory(vid.category || VIDEO_CATEGORIES[0]);
     setVidUrl(vid.url);
-    setVidThumbnail(vid.thumbnail || '');
-    setVidDuration(vid.duration || '03:30');
-    setVidCaption(vid.caption || '');
+    setVidCaption(vid.caption || vid.title || '');
     setVidDate(vid.date || new Date().toISOString().split('T')[0]);
     window.scrollTo({ top: 300, behavior: 'smooth' });
   };
@@ -555,6 +554,10 @@ export default function AdminPage() {
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <Link to="/" className="btn btn-outline-white btn-sm" style={{ color: 'var(--navy)', borderColor: 'var(--border-light)' }}>
+                &larr; Back to Website
+              </Link>
+
               <Link to="/gallery" target="_blank" className="btn btn-outline-gold btn-sm">
                 <Eye size={14} /> View Live Gallery
               </Link>
@@ -884,44 +887,19 @@ export default function AdminPage() {
             <form onSubmit={handleSaveVideo} className="admin-form-container">
               <div className="admin-form-grid">
                 <div>
-                  <div className="admin-form-group">
-                    <label className="admin-form-label">Video Title *</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. 3D Architectural Palace Walkthrough"
-                      value={vidTitle}
-                      onChange={(e) => setVidTitle(e.target.value)}
-                      className="admin-form-input"
-                    />
-                  </div>
-
-                  <div className="admin-form-group">
-                    <label className="admin-form-label">Sector / Category</label>
-                    <select
-                      value={vidCategory}
-                      onChange={(e) => setVidCategory(e.target.value)}
-                      className="admin-form-select"
-                    >
-                      {VIDEO_CATEGORIES.map((c) => (
-                        <option key={c} value={c}>{c}</option>
-                      ))}
-                    </select>
-                  </div>
-
                   {/* Direct Mobile Video Upload */}
                   <div className="admin-form-group">
-                    <label className="admin-form-label">Upload Video from Mobile / Device</label>
+                    <label className="admin-form-label">Select Video from Mobile / Device *</label>
                     <div
                       className="admin-file-dropzone"
                       onClick={() => vidFileInputRef.current?.click()}
-                      style={{ borderColor: vidUrl.startsWith('data:video') ? 'var(--gold)' : undefined }}
+                      style={{ borderColor: vidUrl.startsWith('data:video') ? 'var(--gold)' : undefined, padding: '1.5rem 1rem' }}
                     >
-                      <VideoIcon size={22} style={{ color: 'var(--gold-dark)', marginBottom: 4 }} />
-                      <div style={{ fontSize: '0.86rem', fontWeight: 700, color: 'var(--navy)' }}>
+                      <VideoIcon size={26} style={{ color: 'var(--gold-dark)', marginBottom: 6 }} />
+                      <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--navy)' }}>
                         {vidFileLoading ? 'Loading video file...' : 'Tap to select video from mobile gallery or camera'}
                       </div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                      <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: 3 }}>
                         MP4, MOV, WebM, M4V supported
                       </div>
                       <input
@@ -935,7 +913,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="admin-form-group">
-                    <label className="admin-form-label">Or Paste Video Web Link (YouTube / Embed / Direct MP4)</label>
+                    <label className="admin-form-label">Or Paste Video Web Link</label>
                     <input
                       type="url"
                       placeholder="https://www.youtube.com/watch?v=... or direct MP4 URL"
@@ -945,69 +923,50 @@ export default function AdminPage() {
                     />
                   </div>
 
-                  {/* Video Live Preview */}
+                  {/* Video Live Preview Player */}
                   {vidUrl && (
                     <div className="admin-form-group">
                       <label className="admin-form-label">Live Video Preview</label>
-                      <div style={{ borderRadius: 'var(--radius-sm)', overflow: 'hidden', background: '#000', maxHeight: '180px' }}>
-                        {vidUrl.startsWith('data:video') || vidUrl.match(/\.(mp4|webm|ogg|mov|m4v)($|\?)/i) ? (
+                      <div style={{ borderRadius: 'var(--radius-sm)', overflow: 'hidden', background: '#000', maxHeight: '200px' }}>
+                        {vidUrl.startsWith('data:video') || (!vidUrl.includes('youtube.com') && !vidUrl.includes('youtu.be') && !vidUrl.includes('vimeo.com')) ? (
                           <video
                             src={vidUrl}
                             controls
                             playsInline
-                            style={{ width: '100%', maxHeight: '180px', objectFit: 'contain' }}
+                            style={{ width: '100%', maxHeight: '200px', objectFit: 'contain' }}
                           />
                         ) : (
                           <iframe
                             src={formatVideoEmbed(vidUrl)}
                             title="Preview"
-                            style={{ width: '100%', height: '160px', border: 'none' }}
+                            style={{ width: '100%', height: '180px', border: 'none' }}
                           />
                         )}
                       </div>
                     </div>
                   )}
-
-                  <div className="admin-form-group">
-                    <label className="admin-form-label">Video Duration</label>
-                    <input
-                      type="text"
-                      placeholder="e.g. 04:15"
-                      value={vidDuration}
-                      onChange={(e) => setVidDuration(e.target.value)}
-                      className="admin-form-input"
-                    />
-                  </div>
                 </div>
 
                 <div>
+                  {/* Caption Writing */}
                   <div className="admin-form-group">
-                    <label className="admin-form-label">Thumbnail Image URL</label>
-                    <input
-                      type="url"
-                      placeholder="https://images.unsplash.com/..."
-                      value={vidThumbnail}
-                      onChange={(e) => setVidThumbnail(e.target.value)}
-                      className="admin-form-input"
-                    />
-                  </div>
-
-                  <div className="admin-form-group">
-                    <label className="admin-form-label">Detailed Video Caption *</label>
+                    <label className="admin-form-label">Caption *</label>
                     <textarea
-                      rows={3}
+                      rows={5}
                       required
-                      placeholder="Describe what is being showcased in this site or fabrication walkthrough..."
+                      placeholder="Write video caption (e.g. On-site structural steel erection and column assembly at Rourkela)..."
                       value={vidCaption}
                       onChange={(e) => setVidCaption(e.target.value)}
                       className="admin-form-textarea"
                     />
                   </div>
 
+                  {/* Date Mention */}
                   <div className="admin-form-group">
-                    <label className="admin-form-label">Date</label>
+                    <label className="admin-form-label">Date *</label>
                     <input
                       type="date"
+                      required
                       value={vidDate}
                       onChange={(e) => setVidDate(e.target.value)}
                       className="admin-form-input"
@@ -1017,7 +976,8 @@ export default function AdminPage() {
                   <button
                     type="submit"
                     className="btn btn-navy"
-                    style={{ width: '100%', padding: '0.9rem' }}
+                    style={{ width: '100%', padding: '0.95rem', marginTop: '0.75rem' }}
+                    disabled={vidFileLoading}
                   >
                     <Plus size={16} />
                     {editingVidId ? 'Update Video in Gallery' : 'Publish Video to Live Gallery'}

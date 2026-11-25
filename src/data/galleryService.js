@@ -439,3 +439,77 @@ if (typeof window !== 'undefined') {
     } catch {}
   });
 }
+
+
+/**
+ * Format any video link (YouTube watch, youtu.be, shorts, vimeo) to an embed autoplay URL
+ */
+export function formatVideoEmbed(url) {
+  if (!url) return '';
+  const trimmed = url.trim();
+
+  // YouTube watch link
+  if (trimmed.includes('youtube.com/watch')) {
+    const match = trimmed.match(/[?&]v=([^&#]+)/);
+    const id = match ? match[1] : '';
+    return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+  }
+
+  // youtu.be shortlink
+  if (trimmed.includes('youtu.be/')) {
+    const id = trimmed.split('youtu.be/')[1]?.split('?')[0];
+    return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+  }
+
+  // YouTube shorts link
+  if (trimmed.includes('youtube.com/shorts/')) {
+    const id = trimmed.split('youtube.com/shorts/')[1]?.split('?')[0];
+    return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+  }
+
+  // Already embed link
+  if (trimmed.includes('youtube.com/embed/')) {
+    return trimmed.includes('?') ? `${trimmed}&autoplay=1` : `${trimmed}?autoplay=1&rel=0`;
+  }
+
+  // Vimeo
+  if (trimmed.includes('vimeo.com/')) {
+    const id = trimmed.split('vimeo.com/')[1]?.split('?')[0];
+    return `https://player.vimeo.com/video/${id}?autoplay=1`;
+  }
+
+  return trimmed;
+}
+
+/**
+ * Check if a URL is a direct video file / stream
+ */
+export function isDirectVideoFile(url) {
+  if (!url) return false;
+  const lower = url.toLowerCase();
+  if (lower.startsWith('data:video') || lower.startsWith('blob:')) return true;
+  if (lower.includes('youtube.com') || lower.includes('youtu.be') || lower.includes('vimeo.com')) return false;
+  if (lower.match(/\.(mp4|webm|ogg|mov|m4v)($|\?)/i)) return true;
+  return true;
+}
+
+/**
+ * Extract YouTube ID from various YouTube URL formats
+ */
+export function getYouTubeId(url) {
+  if (!url) return null;
+  if (url.includes('youtube.com/watch')) {
+    const match = url.match(/[?&]v=([^&#]+)/);
+    return match ? match[1] : null;
+  }
+  if (url.includes('youtu.be/')) {
+    return url.split('youtu.be/')[1]?.split('?')[0] || null;
+  }
+  if (url.includes('youtube.com/shorts/')) {
+    return url.split('youtube.com/shorts/')[1]?.split('?')[0] || null;
+  }
+  if (url.includes('youtube.com/embed/')) {
+    return url.split('youtube.com/embed/')[1]?.split('?')[0] || null;
+  }
+  return null;
+}

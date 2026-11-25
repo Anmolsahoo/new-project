@@ -337,6 +337,11 @@ export default function GalleryPage() {
 
               // ── 2. RENDER VIDEO CARD ──
               if (item.type === 'video') {
+                const isDirect = isDirectVideoFile(item.url);
+                const ytId = getYouTubeId(item.url);
+                const ytThumb = ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : null;
+                const thumbSrc = item.thumbnail || ytThumb;
+
                 return (
                   <motion.div
                     key={item.id}
@@ -348,21 +353,36 @@ export default function GalleryPage() {
                     transition={{ duration: 0.3 }}
                   >
                     <div className="gallery-video-media">
-                      <img
-                        src={item.thumbnail || 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80'}
-                        alt={item.title}
-                        loading="lazy"
-                        onError={(e) => {
-                          e.currentTarget.onerror = null;
-                          e.currentTarget.src = 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80';
-                        }}
-                      />
-                      <span className="gallery-item-badge">{item.category}</span>
+                      {thumbSrc ? (
+                        <img
+                          src={thumbSrc}
+                          alt={item.caption || item.title}
+                          loading="lazy"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                      ) : isDirect ? (
+                        <video
+                          src={item.url}
+                          preload="metadata"
+                          muted
+                          playsInline
+                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
+                      ) : (
+                        <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #061324 0%, #102A43 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <VideoIcon size={36} style={{ color: 'var(--gold)' }} />
+                        </div>
+                      )}
+
                       <div className="gallery-play-btn">
                         <div className="gallery-play-icon">
                           <Play size={24} style={{ marginLeft: 3 }} />
                         </div>
                       </div>
+
                       {item.duration && (
                         <div className="gallery-video-duration">
                           {item.duration}
@@ -371,14 +391,15 @@ export default function GalleryPage() {
                     </div>
 
                     <div className="gallery-item-body">
-                      <h3 className="gallery-item-title">{item.title}</h3>
-                      <p className="gallery-item-caption">{item.caption}</p>
+                      <p className="gallery-item-caption" style={{ fontWeight: 700, color: 'var(--navy)', fontSize: '0.92rem', marginBottom: '0.75rem', lineHeight: 1.5 }}>
+                        {item.caption || item.title}
+                      </p>
 
                       <div className="gallery-item-meta">
                         <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                           <Calendar size={13} /> {item.date}
                         </span>
-                        <span style={{ color: 'var(--gold-dark)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                        <span style={{ color: 'var(--gold-dark)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
                           <Play size={12} /> Watch Video
                         </span>
                       </div>
@@ -547,18 +568,21 @@ export default function GalleryPage() {
               </button>
 
               <div className="gallery-video-iframe-wrap">
-                {activeVideo.url && (activeVideo.url.startsWith('data:video') || activeVideo.url.match(/\.(mp4|webm|ogg|mov|m4v)($|\?)/i)) ? (
+                {isDirectVideoFile(activeVideo.url) ? (
                   <video
+                    key={activeVideo.id || activeVideo.url}
                     src={activeVideo.url}
                     controls
                     autoPlay
                     playsInline
+                    preload="auto"
                     style={{ width: '100%', height: '100%', objectFit: 'contain', background: '#000' }}
                   />
                 ) : (
                   <iframe
-                    src={activeVideo.url}
-                    title={activeVideo.title}
+                    key={activeVideo.id || activeVideo.url}
+                    src={formatVideoEmbed(activeVideo.url)}
+                    title={activeVideo.caption || activeVideo.title}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />

@@ -49,6 +49,11 @@ export default function Header() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Do not render the public header navbar in the admin section
+  if (location.pathname === '/admin' || location.pathname.startsWith('/admin/')) {
+    return null;
+  }
+
   const handleNavClick = (path) => {
     setMegaMenuOpen(false);
     navigate(path);
